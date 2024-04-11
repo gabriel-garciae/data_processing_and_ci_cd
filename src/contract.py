@@ -8,6 +8,7 @@ class CategoryEnum(str, Enum):
     category1 = "category1"
     category2 = "category2"
     category3 = "category3"
+    category4 = "category4"
 
 
 class Vendas(BaseModel):

@@ -1,0 +1,16 @@
+name: ci
+
+on: pull_request
+jobs:
+    test: 
+        runs-on: ubunto-latest
+
+        steps:
+            - name: primeira CI realizada
+              run: echo hello world
+
+            - name: verificar o que tem na pasta
+              run: echo $(ls)
+
+            - name: verificar o diretório
+              run: echo $(pwd)

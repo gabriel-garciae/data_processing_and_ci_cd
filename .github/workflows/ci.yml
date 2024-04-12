@@ -1,16 +1,21 @@
 name: ci
-
-on: pull_request
+on: push
 jobs:
-    test: 
+    test:
         runs-on: ubuntu-latest
-
+        strategy:
+          matrix:
+            python-version: ["3.9", "3.10", "3.11", "3.12"]
         steps:
-            - name: primeira CI realizada
-              run: echo hello world
+            - name: Baixar o repositório
+              uses: actions/checkout@v4
+            - name: Instalar o Python
+              uses: actions/setup-python@v5
+              with:
+                python-version: ${{ matrix.python-version }}
 
-            - name: verificar o que tem na pasta
-              run: echo $(ls)
+            - name: Instalo as libs
+              run: pip install -r requirements.txt
 
-            - name: verificar o diretório
-              run: echo $(pwd)
+            - name: rodar minha rotina de testes
+              run: pytest tests/test_contract.py 

@@ -29,7 +29,7 @@ def test_check_title_is(driver):
     # Check if the page is open
     driver.get("http://localhost:8501")
     # Check if the page title is
-    sleep(2)
+    sleep(4)
     # Catch the page title
     page_title = driver.title
 
@@ -41,11 +41,11 @@ def test_check_streamlit_h1(driver):
     # Open the streamlit page
     driver.get("http://localhost:8501")
     # Wait before to execute the next step
-    sleep(2)
+    sleep(4)
 
     # Catch the fisrt element <h1> of page
     h1_element = driver.find_element(By.TAG_NAME, "h1")
 
     # Check if the element text is like below
-    expected_text = "Upload your Excel file here"
+    expected_text = "Excel schema validator"
     assert h1_element.text == expected_text

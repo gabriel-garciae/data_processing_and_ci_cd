@@ -17,15 +17,15 @@ class ExcelValidorUI:
     
     def display_results(self, result, error):
         if error:
-            st.error(f"Erro na validação: {error}")
+            st.error(f"Validation error: {error}")
         else:
-            st.success("O schema do arquivo Excel está correto!")
+            st.success("The Excel file schema is correct!")
 
     def display_save_button(self):
-        return st.button("Salvar no banco de dados")
+        return st.button("Save to database")
     
     def display_wrong_message(self):
-        return st.error("Necessário corrigir a planilha!")
+        return st.error("The spreadsheet needs to be corrected!")
     
     def display_sucess_message(self):
-        return st.success("Dados salvos com sucesso no banco de dados!")
+        return st.success("Data successfully saved in the database!")

@@ -4,25 +4,25 @@ from dotenv import load_dotenv
 
 load_dotenv(".env")
 
-# Lê as variáveis de ambiente
+# Read environment variables
 POSTGRES_USER = os.getenv('POSTGRES_USER')
 POSTGRES_PASSWORD = os.getenv('POSTGRES_PASSWORD')
 POSTGRES_HOST = os.getenv('POSTGRES_HOST')
 POSTGRES_PORT = os.getenv('POSTGRES_PORT')
 POSTGRES_DB = os.getenv('POSTGRES_DB')
 
-# Cria a URL de conexão com o banco de dados
+# Creates the database connection URL
 DATABASE_URL = f"postgresql://{POSTGRES_USER}:{POSTGRES_PASSWORD}@{POSTGRES_HOST}:{POSTGRES_PORT}/{POSTGRES_DB}"
 
 def test_read_data_and_check_schema():
     df = pd.read_sql('SELECT * FROM vendas', con=DATABASE_URL)
 
-    # Verificar se o DataFrame não está vazio
+    # Check if the DataFrame is not empty
     assert not df.empty, "O DataFrame está vazio."
 
-    # Verificar o schema (colunas e tipos de dados)
+    # Check the schema (columns and data types)
     expected_dtype = {
-        'email': 'object',  # object em Pandas corresponde a string em SQL
+        'email': 'object',  # object in Pandas matches string in SQL
         'date': 'datetime64[ns]',
         'value': 'float64',
         'product': 'object',
